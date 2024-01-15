@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temperature Converter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      text-align: center;
+    }
+    .converter {
+      margin-top: 50px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      display: inline-block;
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    .input-container {
+      margin-bottom: 10px;
+      text-align: left;
+    }
+    .input-container label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input[type="number"] {
+      width: 150px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    select {
+      width: 170px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .result-container {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #f4f4f4;
+      border-radius: 5px;
+    }
+    .result-container h3 {
+      margin-bottom: 10px;
+    }
+    p {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="converter">
+    <h2>Temperature Converter</h2>
+    <div class="input-container">
+      <label for="temperature">Degrees:</label>
+      <input type="number" id="temperature" placeholder="Enter temperature">
+    </div>
+    <div class="input-container">
+      <label for="unit">Type:</label>
+      <select id="unit">
+        <option value="celsius">Celsius</option>
+        <option value="Fahrenheit">Fahrenheit</option>
+      </select>
+    </div>
+    <button onclick="convertTemperature()">Convert</button>
+    <div class="result-container">
+      <h3>Result</h3>
+      <p id="result"></p>
+    </div>
+  </div>
+
+  <script>
+    function celsiusToFahrenheit(celsius) {
+      return (celsius * 9/5) + 32;
+    }
+
+    function fahrenheitToCelsius(fahrenheit) {
+      return (fahrenheit - 32) * 5/9;
+    }
+    
+        
+    
+
+    function convertTemperature() {
+      var temperature = parseFloat(document.getElementById("temperature").value);
+      var unit = document.getElementById("unit").value;
+      var result;
+
+      if (unit === "celsius") {
+        result = celsiusToFahrenheit(temperature) + " °F";
+      } else if (unit === "fahrenheit") {
+        result = fahrenheitToCelsius(temperature) + " °C";
+      } else {
+        result = "Invalid unit";
+      }
+
+      document.getElementById("result").innerHTML = result;
+    }
+  </script>
+</body>
+</html>
